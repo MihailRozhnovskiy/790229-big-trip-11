@@ -6,8 +6,9 @@ import {createSiteSortTemplate} from './components/site-sort.js';
 import {createSiteFormTemplate} from './components/site-form.js';
 import {createSiteDayTripTemplate} from './components/day-trip.js';
 import {createSitePointTripTemplate} from './components/point-trip.js';
+import {renderMock} from './components/mock-data.js';
 
-const POINT_COUNT = 3;
+const points = renderMock();
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
@@ -24,9 +25,7 @@ render(siteElement, createSiteSortTemplate(), `beforeend`);
 render(siteElement, createSiteFormTemplate(), `beforeend`);
 render(siteElement, createSiteDayTripTemplate(), `beforeend`);
 
-const sitePointTripElement = siteElement.querySelector(`.trip-events__list`);
+const sitePointTripElement = siteElement.querySelector(`.trip-days__item`);
 
-for (let i = 0; i < POINT_COUNT; i++) {
-  render(sitePointTripElement, createSitePointTripTemplate(), `beforeend`);
-}
+render(sitePointTripElement, createSitePointTripTemplate(points), `beforeend`);
 
