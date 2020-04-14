@@ -16,9 +16,9 @@ const tripDays = renderMock();
 const dates = [];
 const cities = [];
 
-tripDays.forEach((it) => {
-  dates.push(it.dayDate);
-  cities.push(it.point.city);
+tripDays.forEach((item) => {
+  dates.push(item.dayDate);
+  cities.push(item.point.city);
 });
 
 const dateStart = dates[0];
@@ -41,10 +41,10 @@ const photos = tripDays[0].point.photo;
 // DayTrip // PointTrip
 const days = [];
 const points = [];
-tripDays.forEach((it) => {
-  days.push({dayCounter: it.dayCounter,
-    dayDate: it.dayDate});
-  points.push(it.point);
+tripDays.forEach((item) => {
+  days.push({dayCounter: item.dayCounter,
+    dayDate: item.dayDate});
+  points.push(item.point);
 });
 
 const render = (container, template, place) => {
@@ -64,7 +64,7 @@ render(siteElement, createSiteDayTripTemplate(days), `beforeend`);
 
 const sitePointTripElements = siteElement.querySelectorAll(`.trip-days__item`);
 
-sitePointTripElements.forEach((it) => {
-  render(it, createSitePointTripTemplate(points), `beforeend`);
+sitePointTripElements.forEach((element) => {
+  render(element, createSitePointTripTemplate(points), `beforeend`);
 });
 

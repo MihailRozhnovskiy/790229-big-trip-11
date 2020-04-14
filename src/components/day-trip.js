@@ -14,7 +14,7 @@ const createSiteDayTrip = (dayCounter, dayDate) => {
 };
 
 export const createSiteDayTripTemplate = (days) => {
-  const daySection = days.map((it) => createSiteDayTrip(it.dayCounter, it.dayDate)).join(``);
+  const daySection = days.map((day) => createSiteDayTrip(day.dayCounter, day.dayDate)).join(``);
   return (
     `${daySection}`
   );
