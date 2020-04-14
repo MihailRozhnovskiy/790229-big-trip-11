@@ -1,18 +1,21 @@
 
-export const createSiteDayTripTemplate = () => {
-  const dayCounter = 1;
-  const dayMonth = `MAR`;
-  const dayDate = 18;
-
+const createSiteDayTrip = (dayCounter, dayDate) => {
   return (
     `<ul class="trip-days">
       <li class="trip-days__item  day">
         <div class="day__info">
           <span class="day__counter">${dayCounter}</span>
-          <time class="day__date" datetime="2019-03-18">${dayMonth} ${dayDate}</time>
+          <time class="day__date" datetime="2019-03-18">${dayDate}</time>
         </div>
 
       </li>
     </ul>`
+  );
+};
+
+export const createSiteDayTripTemplate = (days) => {
+  const daySection = days.map((it) => createSiteDayTrip(it.dayCounter, it.dayDate)).join(``);
+  return (
+    `${daySection}`
   );
 };

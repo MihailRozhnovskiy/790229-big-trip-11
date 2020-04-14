@@ -1,12 +1,5 @@
 
-export const createSiteFormTemplate = () => {
-  const luggage = 30;
-  const comfort = 100;
-  const meal = 15;
-  const seat = 5;
-  const train = 40;
-  const description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`;
-
+export const createSiteFormTemplate = (luggage, comfort, meal, seat, train, description, photos) => {
 
   return (
     `<form class="trip-events__item  event  event--edit" action="#" method="post">
@@ -173,11 +166,11 @@ export const createSiteFormTemplate = () => {
 
           <div class="event__photos-container">
             <div class="event__photos-tape">
-              <img class="event__photo" src="img/photos/1.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/2.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/3.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/4.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/5.jpg" alt="Event photo">
+              <img class="event__photo" src=${photos[0]} alt="Event photo">
+              <img class="event__photo" src=${photos[1]} alt="Event photo">
+              <img class="event__photo" src=${photos[2]} alt="Event photo">
+              <img class="event__photo" src=${photos[3]} alt="Event photo">
+              <img class="event__photo" src=${photos[4]} alt="Event photo">
             </div>
           </div>
         </section>
