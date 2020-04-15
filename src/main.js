@@ -64,7 +64,6 @@ render(siteElement, createSiteDayTripTemplate(days), `beforeend`);
 
 const sitePointTripElements = siteElement.querySelectorAll(`.trip-days__item`);
 
-sitePointTripElements.forEach((element) => {
-  render(element, createSitePointTripTemplate(points), `beforeend`);
+sitePointTripElements.forEach((element, index) => {
+  render(element, createSitePointTripTemplate([points[index]]), `beforeend`);
 });
-

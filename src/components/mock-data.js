@@ -3,7 +3,7 @@ const QUANTITY = 3;
 
 export const renderMock = () => {
   const tripDays = [];
-  const types = [`Taxi`, `Bus`, `Train`, `Ship`, `Transport`, `Drive`, `Flight`, `Check`, `Sightseeing`, `Restaurant`];
+  const types = [`Taxi`, `Bus`, `Train`, `Ship`, `Transport`, `Drive`, `Flight`, `Check-in`, `Sightseeing`, `Restaurant`];
   const cities = [`Amsterdam`, `London`, `Geneva`, `Paris`, `Rome`, `Milan`, `Vienna`, `Yerevan`, `Minsk`];
   for (let i = 1; i <= QUANTITY; i++) {
     const tripDay = {
