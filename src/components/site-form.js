@@ -1,5 +1,6 @@
 
-export const createSiteFormTemplate = () => {
+export const createSiteFormTemplate = (luggage, comfort, meal, seat, train, description, photos) => {
+
   return (
     `<form class="trip-events__item  event  event--edit" action="#" method="post">
       <header class="event__header">
@@ -117,7 +118,7 @@ export const createSiteFormTemplate = () => {
               <label class="event__offer-label" for="event-offer-luggage-1">
                 <span class="event__offer-title">Add luggage</span>
                 &plus;
-                &euro;&nbsp;<span class="event__offer-price">30</span>
+                &euro;&nbsp;<span class="event__offer-price">${luggage}</span>
               </label>
             </div>
 
@@ -126,7 +127,7 @@ export const createSiteFormTemplate = () => {
               <label class="event__offer-label" for="event-offer-comfort-1">
                 <span class="event__offer-title">Switch to comfort class</span>
                 &plus;
-                &euro;&nbsp;<span class="event__offer-price">100</span>
+                &euro;&nbsp;<span class="event__offer-price">${comfort}</span>
               </label>
             </div>
 
@@ -135,7 +136,7 @@ export const createSiteFormTemplate = () => {
               <label class="event__offer-label" for="event-offer-meal-1">
                 <span class="event__offer-title">Add meal</span>
                 &plus;
-                &euro;&nbsp;<span class="event__offer-price">15</span>
+                &euro;&nbsp;<span class="event__offer-price">${meal}</span>
               </label>
             </div>
 
@@ -144,7 +145,7 @@ export const createSiteFormTemplate = () => {
               <label class="event__offer-label" for="event-offer-seats-1">
                 <span class="event__offer-title">Choose seats</span>
                 &plus;
-                &euro;&nbsp;<span class="event__offer-price">5</span>
+                &euro;&nbsp;<span class="event__offer-price">${seat}</span>
               </label>
             </div>
 
@@ -153,7 +154,7 @@ export const createSiteFormTemplate = () => {
               <label class="event__offer-label" for="event-offer-train-1">
                 <span class="event__offer-title">Travel by train</span>
                 &plus;
-                &euro;&nbsp;<span class="event__offer-price">40</span>
+                &euro;&nbsp;<span class="event__offer-price">${train}</span>
               </label>
             </div>
           </div>
@@ -161,15 +162,15 @@ export const createSiteFormTemplate = () => {
 
         <section class="event__section  event__section--destination">
           <h3 class="event__section-title  event__section-title--destination">Destination</h3>
-          <p class="event__destination-description">Geneva is a city in Switzerland that lies at the southern tip of expansive Lac Léman (Lake Geneva). Surrounded by the Alps and Jura mountains, the city has views of dramatic Mont Blanc.</p>
+          <p class="event__destination-description">${description}</p>
 
           <div class="event__photos-container">
             <div class="event__photos-tape">
-              <img class="event__photo" src="img/photos/1.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/2.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/3.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/4.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/5.jpg" alt="Event photo">
+              <img class="event__photo" src=${photos[0]} alt="Event photo">
+              <img class="event__photo" src=${photos[1]} alt="Event photo">
+              <img class="event__photo" src=${photos[2]} alt="Event photo">
+              <img class="event__photo" src=${photos[3]} alt="Event photo">
+              <img class="event__photo" src=${photos[4]} alt="Event photo">
             </div>
           </div>
         </section>
