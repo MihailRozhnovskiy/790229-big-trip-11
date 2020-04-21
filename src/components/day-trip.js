@@ -1,3 +1,4 @@
+import {createElement} from "../utils";
 
 const createSiteDayTrip = (dayCounter, dayDate) => {
   return (
@@ -13,9 +14,33 @@ const createSiteDayTrip = (dayCounter, dayDate) => {
   );
 };
 
-export const createSiteDayTripTemplate = (days) => {
+const createSiteDayTripTemplate = (days) => {
   const daySection = days.map((day) => createSiteDayTrip(day.dayCounter, day.dayDate)).join(``);
   return (
     `${daySection}`
   );
 };
+
+export class Day {
+  constructor(days) {
+    this._days = days;
+
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createSiteDayTripTemplate(this._days);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

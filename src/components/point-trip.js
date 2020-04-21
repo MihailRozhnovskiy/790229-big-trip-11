@@ -1,3 +1,4 @@
+import {createElement} from "../utils";
 
 const createPointTrip = (typePoint, city, timeStart, timeEnd, price, orderUber) => {
 
@@ -40,7 +41,7 @@ const createPointTrip = (typePoint, city, timeStart, timeEnd, price, orderUber) 
 };
 
 
-export const createSitePointTripTemplate = (points) => {
+const createSitePointTripTemplate = (points) => {
   const pointSection = points.map((point) => createPointTrip(point.typePoint, point.city, point.timeStart, point.timeEnd, point.price, point.orderUber)).join(``);
 
   return (
@@ -49,3 +50,27 @@ export const createSitePointTripTemplate = (points) => {
     </ul>`
   );
 };
+
+export class Point {
+  constructor(points) {
+    this._points = points;
+
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createSitePointTripTemplate(this._points);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
