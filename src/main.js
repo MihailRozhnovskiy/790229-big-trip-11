@@ -55,7 +55,7 @@ const info = new Info(dateStart, dateEnd, routeCities);
 const menu = new Menu();
 const filt = new Filt();
 const sorting = new Sorting();
-const form = new Form(luggage, comfort, meal, seat, train, description, photos);
+// const form = new Form(luggage, comfort, meal, seat, train, description, photos);
 const day = new Day(days);
 
 render(siteInfoElement, info.getElement(), RenderPosition.AFTERBEGIN);
@@ -65,17 +65,28 @@ render(siteElement, sorting.getElement(), RenderPosition.BEFOREEND);
 // render(siteElement, form.getElement(), RenderPosition.BEFOREEND);
 render(siteElement, day.getElement(), RenderPosition.BEFOREEND);
 
-const sitePointTripElements = siteElement.querySelectorAll(`.trip-days__item`);
+const PointTripListElement = siteElement.querySelectorAll(`.trip-days__item`);
 
-sitePointTripElements.forEach((element, index) => {
+PointTripListElement.forEach((element, index) => {
   const point = new Point([points[index]]);
+  const form = new Form(luggage, comfort, meal, seat, train, description, photos);
+
   render(element, point.getElement(), RenderPosition.BEFOREEND);
+  render(siteElement, form.getElement(), RenderPosition.BEFOREEND);
+
+
+  const editButton = point.getElement().querySelector(`.event__rollup-btn`);
+  const editForm = form.getElement().querySelector(`form`);
+
 
   const onEditButtonClick = () => {
     siteElement.replaceChild(form.getElement(), point.getElement());
   };
-  const editButton = siteElement.querySelector(`.event__rollup-btn`);
-
   editButton.addEventListener(`click`, onEditButtonClick);
 
+  const onEditFormSubmit = (evt) => {
+    evt.preventDefault();
+    siteElement.replaceChild(point.getElement(), form.getElement());
+  };
+  editForm.addEventListener(`submit`, onEditFormSubmit);
 });
