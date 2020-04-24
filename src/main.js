@@ -7,6 +7,7 @@ import {Sorting} from "./components/site-sort";
 import {Form} from "./components/site-form";
 import {Day} from "./components/day-trip";
 import {Point} from "./components/point-trip";
+import {DayList} from "./components/site-day-list";
 
 import {renderMock} from './components/mock-data.js';
 
@@ -55,13 +56,19 @@ const info = new Info(dateStart, dateEnd, routeCities);
 const menu = new Menu();
 const filt = new Filt();
 const sorting = new Sorting();
+
+const dayList = new DayList();
 const day = new Day(days);
 
 render(siteInfoElement, info.getElement(), RenderPosition.AFTERBEGIN);
 render(siteMenuElement, menu.getElement(), RenderPosition.AFTERBEGIN);
 render(siteMenuElement, filt.getElement(), RenderPosition.BEFOREEND);
 render(siteElement, sorting.getElement(), RenderPosition.BEFOREEND);
-render(siteElement, day.getElement(), RenderPosition.BEFOREEND);
+render(siteElement, dayList.getElement(), RenderPosition.BEFOREEND);
+
+const siteDayList = siteElement.querySelector(`.trip-days`);
+
+render(siteDayList, day.getElement(), RenderPosition.BEFOREEND);
 
 const PointTripListElement = siteElement.querySelectorAll(`.trip-days__item`);
 
