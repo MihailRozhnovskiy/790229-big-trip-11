@@ -1,5 +1,7 @@
 
-export const createSiteInfoTemplate = (dateStart, dateEnd, routeCities) => {
+import {createElement} from "../utils";
+
+const createSiteInfoTemplate = (dateStart, dateEnd, routeCities) => {
 
   return (
     `<section class="trip-main__trip-info  trip-info">
@@ -17,3 +19,28 @@ export const createSiteInfoTemplate = (dateStart, dateEnd, routeCities) => {
 };
 
 
+export class Info {
+  constructor(dateStart, dateEnd, routeCities) {
+    this._dateStart = dateStart;
+    this._dateEnd = dateEnd;
+    this._routeCities = routeCities;
+
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createSiteInfoTemplate(this._dateStart, this._dateEnd, this._routeCities);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate(), `<section class="trip-main__trip-info  trip-info">`);
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
