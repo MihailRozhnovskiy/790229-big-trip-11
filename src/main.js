@@ -55,18 +55,13 @@ const info = new Info(dateStart, dateEnd, routeCities);
 const menu = new Menu();
 const filt = new Filt();
 const sorting = new Sorting();
-// const form = new Form(luggage, comfort, meal, seat, train, description, photos);
 const day = new Day(days);
 
 render(siteInfoElement, info.getElement(), RenderPosition.AFTERBEGIN);
 render(siteMenuElement, menu.getElement(), RenderPosition.AFTERBEGIN);
 render(siteMenuElement, filt.getElement(), RenderPosition.BEFOREEND);
 render(siteElement, sorting.getElement(), RenderPosition.BEFOREEND);
-
-const siteDyaElement = document.querySelector(`.trip-days`);
-
-// render(siteElement, form.getElement(), RenderPosition.BEFOREEND);
-render(siteDyaElement, day.getElement(), RenderPosition.BEFOREEND);
+render(siteElement, day.getElement(), RenderPosition.BEFOREEND);
 
 const PointTripListElement = siteElement.querySelectorAll(`.trip-days__item`);
 
@@ -75,12 +70,9 @@ PointTripListElement.forEach((element, index) => {
   const form = new Form(luggage, comfort, meal, seat, train, description, photos);
 
   render(element, point.getElement(), RenderPosition.BEFOREEND);
-  //render(siteElement, form.getElement(), RenderPosition.BEFOREEND);
-
 
   const editButton = point.getElement().querySelector(`.event__rollup-btn`);
   const editForm = form.getElement().querySelector(`form`);
-
 
   const onEditButtonClick = () => {
     element.replaceChild(form.getElement(), point.getElement());

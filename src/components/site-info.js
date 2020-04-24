@@ -4,7 +4,8 @@ import {createElement} from "../utils";
 const createSiteInfoTemplate = (dateStart, dateEnd, routeCities) => {
 
   return (
-    `<div class="trip-info__main">
+    `<section class="trip-main__trip-info  trip-info">
+      <div class="trip-info__main">
         <h1 class="trip-info__title">${routeCities}</h1>
 
         <p class="trip-info__dates">${dateStart}&nbsp;&mdash;&nbsp;${dateEnd}</p>
@@ -12,7 +13,8 @@ const createSiteInfoTemplate = (dateStart, dateEnd, routeCities) => {
 
         <p class="trip-info__cost">
           Total: &euro;&nbsp;<span class="trip-info__cost-value">1230</span>
-        </p>`
+        </p>
+    </section>`
   );
 };
 
@@ -32,7 +34,7 @@ export class Info {
 
   getElement() {
     if (!this._element) {
-      this._element = createElement(this.getTemplate(), `section`, `trip-main__trip-info  trip-info`);
+      this._element = createElement(this.getTemplate(), `<section class="trip-main__trip-info  trip-info">`);
     }
 
     return this._element;
