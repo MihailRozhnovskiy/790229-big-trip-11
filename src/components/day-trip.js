@@ -15,7 +15,9 @@ const createSiteDayTrip = (dayCounter, dayDate) => {
 const createSiteDayTripTemplate = (days) => {
   const daySection = days.map((day) => createSiteDayTrip(day.dayCounter, day.dayDate)).join(``);
   return (
-    `${daySection}`
+    `<ul class="trip-days">
+      ${daySection}
+    </ul>`
   );
 };
 
