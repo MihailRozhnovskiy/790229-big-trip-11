@@ -31,7 +31,10 @@ const createSiteSortTemplate = () => {
       </div>
 
       <span class="trip-sort__item  trip-sort__item--offers">Offers</span>
-    </form>`
+    </form>
+    <ul class="trip-days">
+    
+    </ul>`
   );
 };
 

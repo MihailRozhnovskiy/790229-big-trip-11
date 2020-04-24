@@ -4,8 +4,9 @@ export const RenderPosition = {
   BEFOREEND: `beforeend`
 };
 
-export const createElement = (template) => {
-  const newElement = document.createElement(`div`);
+export const createElement = (template, teg, nameClass) => {
+  const newElement = document.createElement(teg);
+  newElement.className = nameClass;
   newElement.innerHTML = template;
 
   return newElement;
