@@ -9,7 +9,6 @@ const createSiteMenuTemplate = () => {
   );
 };
 
-
 export class Menu {
   constructor() {
     this._element = null;

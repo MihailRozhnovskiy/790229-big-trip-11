@@ -63,9 +63,7 @@ render(siteMenuElement, filt.getElement(), RenderPosition.BEFOREEND);
 render(siteElement, sorting.getElement(), RenderPosition.BEFOREEND);
 render(siteElement, day.getElement(), RenderPosition.BEFOREEND);
 
-const tripDay = day.getElement().querySelector(`.trip-days`);
-
-const PointTripListElement = tripDay.querySelectorAll(`.trip-days__item`);
+const PointTripListElement = day.getElement().querySelectorAll(`.trip-days__item`);
 
 PointTripListElement.forEach((element, index) => {
   const point = new Point([points[index]]);
@@ -74,7 +72,7 @@ PointTripListElement.forEach((element, index) => {
   render(element, point.getElement(), RenderPosition.BEFOREEND);
 
   const editButton = point.getElement().querySelector(`.event__rollup-btn`);
-  const editForm = form.getElement().querySelector(`form`);
+  const editForm = form.getElement();
 
   const onEditButtonClick = () => {
     element.replaceChild(form.getElement(), point.getElement());

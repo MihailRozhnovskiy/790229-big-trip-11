@@ -40,7 +40,6 @@ const createPointTrip = (typePoint, city, timeStart, timeEnd, price, orderUber) 
   );
 };
 
-
 const createSitePointTripTemplate = (points) => {
   const pointSection = points.map((point) => createPointTrip(point.typePoint, point.city, point.timeStart, point.timeEnd, point.price, point.orderUber)).join(``);
 
