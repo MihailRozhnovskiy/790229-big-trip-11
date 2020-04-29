@@ -1,4 +1,5 @@
-import {createElement} from "../utils";
+
+import {AbstractComponent} from "./abstract-component.js";
 
 const createSiteNoPointTemplate = () => {
   return (
@@ -6,24 +7,8 @@ const createSiteNoPointTemplate = () => {
   );
 };
 
-export class NoPoint {
-  constructor() {
-    this._element = null;
-  }
-
+export class NoPoint extends AbstractComponent {
   getTemplate() {
     return createSiteNoPointTemplate();
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
