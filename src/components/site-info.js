@@ -1,5 +1,5 @@
 
-import {createElement} from "../utils";
+import {AbstractComponent} from "./abstract-component.js";
 
 const createSiteInfoTemplate = (dateStart, dateEnd, routeCities) => {
 
@@ -33,28 +33,16 @@ const createSiteInfoTemplate = (dateStart, dateEnd, routeCities) => {
 };
 
 
-export class Info {
+export class Info extends AbstractComponent {
   constructor(dateStart, dateEnd, routeCities) {
+    super();
+
     this._dateStart = dateStart;
     this._dateEnd = dateEnd;
     this._routeCities = routeCities;
-
-    this._element = null;
   }
 
   getTemplate() {
     return createSiteInfoTemplate(this._dateStart, this._dateEnd, this._routeCities);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate(), `<section class="trip-main__trip-info  trip-info">`);
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

@@ -1,4 +1,5 @@
-import {createElement} from "../utils";
+
+import {AbstractComponent} from "./abstract-component.js";
 
 const createSiteFormTemplate = (luggage, comfort, meal, seat, train, description, photos) => {
 
@@ -180,8 +181,10 @@ const createSiteFormTemplate = (luggage, comfort, meal, seat, train, description
   );
 };
 
-export class Form {
+export class Form extends AbstractComponent {
   constructor(luggage, comfort, meal, seat, train, description, photos) {
+    super();
+
     this._luggage = luggage;
     this._comfort = comfort;
     this._meal = meal;
@@ -189,23 +192,13 @@ export class Form {
     this._train = train;
     this._description = description;
     this._photos = photos;
-
-    this._element = null;
   }
 
   getTemplate() {
     return createSiteFormTemplate(this._luggage, this._comfort, this._meal, this._seat, this._train, this._description, this._photos);
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
+  setClickHandler(handler) {
+    this.getElement().addEventListener(`submit`, handler);
   }
 }
