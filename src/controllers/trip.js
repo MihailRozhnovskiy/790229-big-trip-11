@@ -1,6 +1,4 @@
 
-import {Info} from "../components/site-info";
-import {Sorting} from "../components/site-sort";
 import {Form} from "../components/site-form";
 import {Day} from "../components/day-trip";
 import {Point} from "../components/point-trip";
@@ -14,25 +12,7 @@ export class TripController {
   }
 
   render(tripDays) {
-    const siteInfoElement = document.querySelector(`.trip-main`);
     const siteElement = document.querySelector(`.trip-events`);
-
-    // SiteInfo
-    const dates = [];
-    const cities = [];
-
-    tripDays.forEach((item) => {
-      dates.push(item.dayDate);
-      cities.push(item.point.city);
-    });
-
-    const dateStart = dates[0];
-    let dateEnd = dates[dates.length - 1];
-
-    if (dates[0].substr(1, 3) === dates[dates.length - 1].substr(1, 3)) {
-      dateEnd = parseInt(dates[dates.length - 1].replace(/\D+/g, ``), 10);
-    }
-    const routeCities = cities.join(` &mdash; `);
 
     // DayTrip // PointTrip
     const days = [];
@@ -51,20 +31,17 @@ export class TripController {
     const train = tripDays[0].point.offer.train;
     const description = tripDays[0].point.description;
     const photos = tripDays[0].point.photo;
+    const period = tripDays[0].point.period;
 
-    const info = new Info(dateStart, dateEnd, routeCities);
-    const sorting = new Sorting();
     const day = new Day(days);
 
-    render(siteInfoElement, info, RenderPosition.AFTERBEGIN);
-    render(siteElement, sorting, RenderPosition.BEFOREEND);
     render(siteElement, day, RenderPosition.BEFOREEND);
 
     const PointTripListElement = day.getElement().querySelectorAll(`.trip-days__item`);
 
     PointTripListElement.forEach((element, index) => {
       const point = new Point([points[index]]);
-      const form = new Form(luggage, comfort, meal, seat, train, description, photos);
+      const form = new Form(luggage, comfort, meal, seat, train, description, photos, period);
 
       render(element, point, RenderPosition.BEFOREEND);
 

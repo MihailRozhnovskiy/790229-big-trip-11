@@ -1,7 +1,7 @@
 
 import {AbstractComponent} from "./abstract-component.js";
 
-const createPointTrip = (typePoint, city, timeStart, timeEnd, price, orderUber) => {
+const createPointTrip = (typePoint, city, timeStart, timeEnd, price, orderUber, period) => {
 
   return (
     `<li class="trip-events__item">
@@ -17,7 +17,7 @@ const createPointTrip = (typePoint, city, timeStart, timeEnd, price, orderUber) 
             &mdash;
             <time class="event__end-time" datetime="2019-03-18T11:00">${timeEnd}</time>
           </p>
-          <p class="event__duration">30M</p>
+          <p class="event__duration">${period}h</p>
         </div>
 
         <p class="event__price">
@@ -42,7 +42,7 @@ const createPointTrip = (typePoint, city, timeStart, timeEnd, price, orderUber) 
 };
 
 const createSitePointTripTemplate = (points) => {
-  const pointSection = points.map((point) => createPointTrip(point.typePoint, point.city, point.timeStart, point.timeEnd, point.price, point.orderUber)).join(``);
+  const pointSection = points.map((point) => createPointTrip(point.typePoint, point.city, point.timeStart, point.timeEnd, point.price, point.orderUber, point.period)).join(``);
 
   return (
     `<ul class="trip-events__list">

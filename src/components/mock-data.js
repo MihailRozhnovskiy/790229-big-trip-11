@@ -22,8 +22,9 @@ export const renderMock = (QUANTITY) => {
           },
           description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
           photo: [`img/photos/1.jpg`, `img/photos/2.jpg`, `img/photos/3.jpg`, `img/photos/4.jpg`, `img/photos/5.jpg`],
-          timeStart: `10:00`,
-          timeEnd: `10:30`,
+          timeStart: i + `:00`,
+          timeEnd: i * 2 + `:00`,
+          period: i * 2 - i,
           price: 20 * i,
           orderUber: 20 * i
         }
