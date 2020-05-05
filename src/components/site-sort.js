@@ -54,4 +54,8 @@ export class Sorting extends AbstractComponent {
   setSortTypePointHandler(handler) {
     this.getElement().addEventListener(`change`, handler);
   }
+
+  removeSortTypePointHandler(handler) {
+    this.getElement().removeEventListener(`change`, handler);
+  }
 }

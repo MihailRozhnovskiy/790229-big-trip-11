@@ -18,7 +18,7 @@ const renderPoint = new TripController();
 const renderBoard = () => {
   const siteInfoElement = document.querySelector(`.trip-main`);
   const siteMenuElement = siteInfoElement.querySelector(`.trip-controls`);
-  const siteElement = document.querySelector(`.trip-events`);
+  const siteSortingElement = document.querySelector(`.trip-events`);
 
   const menu = new Menu();
   const filt = new Filt();
@@ -30,7 +30,7 @@ const renderBoard = () => {
     render(siteInfoElement, info, RenderPosition.AFTERBEGIN);
     render(siteMenuElement, menu, RenderPosition.AFTERBEGIN);
     render(siteMenuElement, filt, RenderPosition.BEFOREEND);
-    render(siteElement, noPoint, RenderPosition.BEFOREEND);
+    render(siteSortingElement, noPoint, RenderPosition.BEFOREEND);
     return;
   }
 
@@ -56,7 +56,7 @@ const renderBoard = () => {
   render(siteInfoElement, info, RenderPosition.AFTERBEGIN);
   render(siteMenuElement, menu, RenderPosition.AFTERBEGIN);
   render(siteMenuElement, filt, RenderPosition.BEFOREEND);
-  render(siteElement, sorting, RenderPosition.BEFOREEND);
+  render(siteSortingElement, sorting, RenderPosition.BEFOREEND);
 
   renderPoint.render(tripDays);
 
@@ -80,6 +80,10 @@ const renderBoard = () => {
   };
 
   const onSortPointClick = (evt) => {
+
+    const tripDaysElement = document.querySelector(`.trip-days`);
+    tripDaysElement.innerHTML = ``;
+
     evt.preventDefault();
     if (evt.target.tagName !== `INPUT`) {
       return;
@@ -87,6 +91,7 @@ const renderBoard = () => {
     const sortType = evt.target.dataset.sortType;
 
     renderPoint.render(getSortPoints(tripDays, sortType));
+    sorting.removeSortTypePointHandler(onSortPointClick);//
   };
   sorting.setSortTypePointHandler(onSortPointClick);
 };

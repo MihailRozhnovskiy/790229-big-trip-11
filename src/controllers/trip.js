@@ -37,9 +37,9 @@ export class TripController {
 
     render(siteElement, day, RenderPosition.BEFOREEND);
 
-    const PointTripListElement = day.getElement().querySelectorAll(`.trip-days__item`);
+    const pointTripListElement = day.getElement().querySelectorAll(`.trip-days__item`);
 
-    PointTripListElement.forEach((element, index) => {
+    pointTripListElement.forEach((element, index) => {
       const point = new Point([points[index]]);
       const form = new Form(luggage, comfort, meal, seat, train, description, photos, period);
 
