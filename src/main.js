@@ -82,7 +82,7 @@ const renderBoard = () => {
   const onSortPointClick = (evt) => {
 
     const tripDaysElement = document.querySelector(`.trip-days`);
-    tripDaysElement.innerHTML = ``;
+    tripDaysElement.remove();
 
     evt.preventDefault();
     if (evt.target.tagName !== `INPUT`) {
@@ -91,7 +91,6 @@ const renderBoard = () => {
     const sortType = evt.target.dataset.sortType;
 
     renderPoint.render(getSortPoints(tripDays, sortType));
-    sorting.removeSortTypePointHandler(onSortPointClick);//
   };
   sorting.setSortTypePointHandler(onSortPointClick);
 };
