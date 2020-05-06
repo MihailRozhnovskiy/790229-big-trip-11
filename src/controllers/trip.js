@@ -4,6 +4,7 @@ import {Day} from "../components/day-trip";
 import {Point} from "../components/point-trip";
 import {replaceElement} from "../utils/render";
 import {render, RenderPosition} from "../utils/render";
+import {SortType} from "../components/site-sort";
 
 
 export class TripController {
@@ -11,7 +12,7 @@ export class TripController {
     this._container = container;
   }
 
-  render(tripDays) {
+  render(tripDays, sortType) {
     const siteElement = document.querySelector(`.trip-events`);
 
     // DayTrip // PointTrip
@@ -39,9 +40,15 @@ export class TripController {
 
     const pointTripListElement = day.getElement().querySelectorAll(`.trip-days__item`);
 
+
     pointTripListElement.forEach((element, index) => {
+      const dayInfo = element.querySelector(`.day__info`);
       const point = new Point([points[index]]);
       const form = new Form(luggage, comfort, meal, seat, train, description, photos, period);
+
+      if (sortType === SortType.TIME || sortType === SortType.PRICE) {
+        dayInfo.innerHTML = ``;
+      }
 
       render(element, point, RenderPosition.BEFOREEND);
 
