@@ -5,7 +5,8 @@ import {Menu} from "./components/site-menu";
 import {Filt} from "./components/site-filter";
 import {Sorting, SortType} from "./components/site-sort";
 import {NoPoint} from "./components/site-no-points";
-import {TripController} from "./controllers/trip";
+// import {TripController} from "./controllers/trip";
+import {PointController} from "./controllers/point";
 
 import {renderMock} from './components/mock-data';
 
@@ -13,7 +14,7 @@ const QUANTITY = 3;
 const tripDays = renderMock(QUANTITY);
 const isTripDaysEmpty = tripDays.length === 0;
 
-const renderPoint = new TripController();
+const renderPoint = new PointController();
 
 const renderBoard = () => {
   const siteInfoElement = document.querySelector(`.trip-main`);
