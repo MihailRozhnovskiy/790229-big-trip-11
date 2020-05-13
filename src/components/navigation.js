@@ -1,7 +1,6 @@
+import AbstractComponent from "./abstract-component";
 
-import {AbstractComponent} from "./abstract-component.js";
-
-const createSiteMenuTemplate = () => {
+const createNavTemplate = () => {
   return (
     `<nav class="trip-controls__trip-tabs  trip-tabs">
       <a class="trip-tabs__btn  trip-tabs__btn--active" href="#">Table</a>
@@ -10,8 +9,8 @@ const createSiteMenuTemplate = () => {
   );
 };
 
-export class Menu extends AbstractComponent {
+export default class Navigation extends AbstractComponent {
   getTemplate() {
-    return createSiteMenuTemplate();
+    return createNavTemplate();
   }
 }
