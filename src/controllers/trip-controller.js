@@ -10,6 +10,7 @@ import PointController from "./point-controller";
 import {getDurationTravel} from "../date-helpers";
 import {getRodLine, getTotalPrice, getSortedPoints} from "../utils/common";
 import {RenderPosition, render} from "../utils/render";
+import moment from "moment";
 
 
 const renderPoint = (container, points, onDataChange, onViewChange) => {
@@ -42,7 +43,7 @@ const renderEvents = (tripInfoContainer, dayContainer, points, onDataChange, onV
 
   } else {
 
-    const datesList = [...new Set(points.map((elem) => new Date(elem.start).toDateString()))];
+    const datesList = [...new Set(points.map((elem) => moment(elem.start).format(`YYYY-MM-DD`)))];
 
     const roadLine = getRodLine(points);
     const durationTravel = getDurationTravel(datesList);
@@ -56,7 +57,7 @@ const renderEvents = (tripInfoContainer, dayContainer, points, onDataChange, onV
       render(dayContainer, dayComponent, RenderPosition.BEFOREEND);
       const day = dayComponent.getElement().querySelector(`.trip-events__list`);
 
-      const pointsFilter = points.filter((el) => new Date(el.start).toDateString() === date);
+      const pointsFilter = points.filter((el) => moment(el.start).format(`YYYY-MM-DD`) === date);
 
       const newPoint = renderPoint(day, pointsFilter, onDataChange, onViewChange);
       pointControllers = pointControllers.concat(newPoint);
@@ -132,8 +133,6 @@ export default class TripController {
         return;
       }
       this._pointControllers = renderEvents(this._tripInfoContainer, this._dayContainer, sortedPoints, this._onDataChange, this._onViewChange, true);
-
     });
   }
-
 }

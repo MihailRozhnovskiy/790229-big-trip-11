@@ -16,7 +16,7 @@ const createEventPointTemplate = (dataPoint) => {
   const {type, destination, eventPrice, offer, start, end} = dataPoint;
 
   const renderOfferMurkup = renderOffers(offer);
-  const [satrHours, starMinute, endHours, endMinute] = getStartEndEvent(start, end);
+  const [startTime, endTime] = getStartEndEvent(start, end);
   const duration = getDurationTime(start, end);
 
 
@@ -29,9 +29,9 @@ const createEventPointTemplate = (dataPoint) => {
         <h3 class="event__title">${type} ${LabelOfType[type]} ${destination}</h3>
         <div class="event__schedule">
           <p class="event__time">
-            <time class="event__start-time" datetime="2019-03-19T11:20">${satrHours}:${starMinute}</time>
+            <time class="event__start-time" datetime="${startTime}">${startTime}</time>
             &mdash;
-            <time class="event__end-time" datetime="2019-03-19T13:00">${endHours}:${endMinute}</time>
+            <time class="event__end-time" datetime="${endTime}">${endTime}</time>
           </p>
           <p class="event__duration">${duration}</p>
         </div>
