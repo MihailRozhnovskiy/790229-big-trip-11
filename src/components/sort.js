@@ -1,4 +1,3 @@
-
 import AbstractComponent from "./abstract-component";
 
 export const SortType = {
@@ -49,6 +48,11 @@ export default class Sort extends AbstractComponent {
     return createSortTemplate();
   }
 
+  resetSort() {
+    this._currentSortType = SortType.EVENT;
+    this.getElement().querySelector(`#sort-event`).checked = true;
+  }
+
   setSortTypeChangeHandler(handler) {
     this.getElement().addEventListener(`click`, (evt) => {
 
@@ -63,7 +67,6 @@ export default class Sort extends AbstractComponent {
       }
 
       this._currentSortType = sortType;
-
       handler(this._currentSortType);
     });
   }
